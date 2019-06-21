@@ -12,39 +12,17 @@
 	  
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col-sm"></div>
-			<div class="col-sm">
-			<h1>EVENT APP</h1>
-			<br>
-			<br>
-			<h4>ADD GMAILS</h4>
-
-			<form method="POST" action="">
-				<div class="form-group">
-					<label class="control-label">Enter Email-Id</label>
-					<input type="email" class="form-control" name="email_id" id="email" placeholder="abcd@xyz.com">
-					 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-			
-				</div>
-
-		
-				<input type="Submit" value="Add" id="add">
-			</form>
-			<form method='POST' action="/gmail/done">
-				<input type="Submit" value="done" id="done">
-			</form>
-			<h5>The GMAILS Are</h5>
-			{% for maillist in emails %}
+	<h2>Required Information</h2>
+	<h4>Events</h4>
+	{% for eventlist in events %}
+		<p>{{eventlist.event_name}}</p>
+		<p>{{eventlist.event_description}}</p>
+		<p>{{eventlist.date_time}}</p>
+	{% endfor%}
+	<h4>gmails</h4>
+	{% for maillist in emails %}
 				<p>{{maillist.mail_id}}</p>
-				<p>{{maillist.user_id}}</p>
+				
 			{% endfor%}
-			</div>
-			<div class="col-sm"></div>
-	
-	<h4> THE GMAILS ARE </h4>
-</div>
-
-
 </body>
+</html>
