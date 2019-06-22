@@ -95,7 +95,15 @@ def add_gmail():
 	dates = db.session.query(Event).all()
 	dates = [op.date_time for op in dates]
 
-	now= datetime.datetime.utcnow().isoformat() + 'Z'
+	now= dates[0].isoformat() + 'Z'
+
+	attend=[]
+	mydict={}
+	for i in range(len(mail)):
+		mydict['email']=mail[i]
+		attend.append(mydict.copy())
+	print(attend)
+
 
 	print("Getting the upcomming events")
 	event ={ 'summary' :event[0],
@@ -107,14 +115,11 @@ def add_gmail():
     'dateTime': now,
     
   },
-  'attendees': [
-  	
-  		{'email': m for m in mail},
-  		{'email': 'rickydas189@gmail.com'},
+  'attendees': attend,
   		
     	
    
-  ],}
+  }
 
 	event= service.events().insert(calendarId='primary', body=event).execute()
 	events_result= service.events().list(calendarId='primary', timeMin=now,

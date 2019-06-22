@@ -37,7 +37,7 @@ def main():
     # Call the Calendar API
     now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
     print('Getting the upcoming 10 events')
-    event ={ 'summary' :'TEST 2',
+    event ={ 'summary' :'TEST 3',
             'start': {
     'dateTime': now,
     'timeZone': 'America/Los_Angeles',
@@ -48,7 +48,7 @@ def main():
   },
   'attendees': [
     {'email': 'rickydas189@gmail.com'},
-    {'email': 'sbrin@example.com'},
+    {'email': 'rickydas1812@google.com'},
   ],}
     event = service.events().insert(calendarId='primary', body=event).execute()
     events_result = service.events().list(calendarId='primary', timeMin=now,
